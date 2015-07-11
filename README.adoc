@@ -1,6 +1,6 @@
 = Neo4j Movies Example Application - The PHP NeoClient Version
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+https://heroku.com/deploy[image::https://www.herokucdn.com/deploy/button.png]
 
 First, download and install the https://getcomposer.org/[Composer dependency manager] for PHP.
 
