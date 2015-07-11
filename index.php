@@ -16,6 +16,8 @@ if (false !== getenv('GRAPHSTORY_URL')) {
     $cnx = parse_url($config['neo4j_url']);
 }
 
+print_r($cnx);
+
 $neo4j = ClientBuilder::create()
     ->addConnection('default', $cnx['scheme'], $cnx['host'], $cnx['port'], true, $cnx['user'], $cnx['pass'])
     ->setAutoFormatResponse(true)
