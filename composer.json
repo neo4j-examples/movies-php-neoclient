@@ -9,5 +9,8 @@
         "php": "~5.4",
         "neoxygen/neoclient": "~2.1",
         "silex/silex": "~1.1"
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "^70.0"
     }
 }
