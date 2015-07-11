@@ -117,9 +117,19 @@ $app->get('/movie/{title}', function ($title) use ($neo4j) {
     return $response;
 });
 
-$app->get('/import', function () use ($neo4j) {
+$app->get('/import', function () use ($app, $neo4j) {
     $q = trim(file_get_contents(__DIR__.'/static/movies.cypher'));
     $neo4j->sendCypherQuery($q);
+
+    return $app->redirect('/');
+});
+
+$app->get('/reset', function() use ($app, $neo4j) {
+    $q = 'MATCH (n) OPTIONAL MATCH (n)-[r]-() DELETE r,n';
+    $neo4j->sendCypherQuery($q);
+
+    return $app->redirect('/import');
+
 });
 
 $app->run();
