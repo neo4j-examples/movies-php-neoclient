@@ -1,14 +1,20 @@
 <?php
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request,
-    Symfony\Component\HttpFoundation\JsonResponse;
+    Symfony\Component\HttpFoundation\JsonResponse,
+    Symfony\Component\Yaml\Yaml;
 use Neoxygen\NeoClient\ClientBuilder;
 
 require __DIR__.'/vendor/autoload.php';
 
 $app = new Application();
 
-$cnx = parse_url(getenv('GRAPHSTORY_URL'));
+if (false !== getenv('GRAPHSTORY_URL')) {
+    $cnx = parse_url(getenv('GRAPHSTORY_URL'));
+} else {
+    $config = Yaml::parse(file_get_contents(__DIR__.'/config/config.yml'));
+    $cnx = parse_url($config['neo4j_url']);
+}
 
 $neo4j = ClientBuilder::create()
     ->addConnection('default', $cnx['scheme'], $cnx['host'], $cnx['port'], true, $cnx['user'], $cnx['pass'])
