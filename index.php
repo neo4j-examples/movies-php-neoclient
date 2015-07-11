@@ -8,8 +8,10 @@ require __DIR__.'/vendor/autoload.php';
 
 $app = new Application();
 
+$cnx = parse_url(getenv('GRAPHSTORY_URL'));
+
 $neo4j = ClientBuilder::create()
-    ->addDefaultLocalConnection()
+    ->addConnection('default', $cnx['scheme'], $cnx['host'], $cnx['port'], true, $cnx['user'], $cnx['pass'])
     ->setAutoFormatResponse(true)
     ->build();
 
