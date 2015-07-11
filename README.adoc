@@ -2,8 +2,6 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-
-
 First, download and install the https://getcomposer.org/[Composer dependency manager] for PHP.
 
 Next, change into the source directory and install the dependencies:

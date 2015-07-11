@@ -19,6 +19,7 @@ if (false !== getenv('GRAPHSTORY_URL')) {
 $neo4j = ClientBuilder::create()
     ->addConnection('default', $cnx['scheme'], $cnx['host'], $cnx['port'], true, $cnx['user'], $cnx['pass'])
     ->setAutoFormatResponse(true)
+    ->setDefaultTimeout(20)
     ->build();
 
 $app->get('/', function () {
@@ -114,6 +115,11 @@ $app->get('/movie/{title}', function ($title) use ($neo4j) {
     $response->setData($mov);
 
     return $response;
+});
+
+$app->get('/import', function () use ($neo4j) {
+    $q = trim(file_get_contents(__DIR__.'/static/movies.cypher'));
+    $neo4j->sendCypherQuery($q);
 });
 
 $app->run();
