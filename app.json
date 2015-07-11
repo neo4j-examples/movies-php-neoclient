@@ -1,0 +1,18 @@
+{
+  "name": "Movies Example PHP NeoClient",
+  "description": "Showing how PHP loves Neo4j with the NeoClient library",
+  "keywords": [
+    "graph",
+    "neo4j",
+    "php",
+    "api",
+    "client"
+  ],
+  "website": "https://github.com/neoxygen",
+  "repository": "https://github.com/neo4j-examples/movies-php-neoclient",
+  "success_url": "/import",
+  "env": {
+    "BUILDPACK_URL": "https://github.com/CHH/heroku-buildpack-php"
+  },
+  "addons": ["graphstory"]
+}
